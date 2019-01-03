@@ -6,26 +6,19 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateTracksTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-        Schema::create('tracks', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
-        });
-    }
+	public function up()
+	{
+		Schema::create('tracks', function (Blueprint $table) {
+			$table->increments('id');
+			$table->unsignedInteger('user_id');
+			$table->string('attachment');
+			$table->string('name');
+			$table->timestamps();
+		});
+	}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('tracks');
-    }
+	public function down()
+	{
+		Schema::dropIfExists('tracks');
+	}
 }
